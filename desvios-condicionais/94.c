@@ -9,13 +9,14 @@ das cédulas maiores.*/
 const int MAX_SAQUE = 1000;
 
 int main() {
-    int valor_saque, notas_cem = 0, notas_cinquenta = 0, notas_vinte = 0, notas_dez = 0;
+    int valor_saque, notas_cem = 0, notas_cinquenta = 0, notas_vinte = 0, notas_dez = 0, troco = 0;
 
     printf("Informe o valor do saque: \n");
     scanf("%d", &valor_saque);
 
     //verificando se o valor é superior ao máximo permitido
     if (valor_saque > MAX_SAQUE) {
+        troco = valor_saque - MAX_SAQUE;
         valor_saque = MAX_SAQUE;
     }
 
@@ -38,10 +39,13 @@ int main() {
     if (valor_saque >= 10) {
         notas_dez = valor_saque/10;
         valor_saque %= 10;
+        //adicao do troco caso algum valor nao seja sacavel com as notas disponiveis
     }
 
+    troco += valor_saque;
+
     //exibindo ao usuário
-    printf("Resumo saque \nNotas cem = %d \nNotas cinquenta = %d \nNotas vinte = %d \nNotas dez = %d \n\nTroco %d", notas_cem, notas_cinquenta, notas_vinte, notas_dez, valor_saque);
+    printf("Resumo saque \nNotas cem = %d \nNotas cinquenta = %d \nNotas vinte = %d \nNotas dez = %d \n\nTroco %d", notas_cem, notas_cinquenta, notas_vinte, notas_dez, troco);
 
     return 0;
 }
