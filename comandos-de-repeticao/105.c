@@ -8,9 +8,16 @@ void main() {
     printf("Informe respectivamente dois numeros de um intervalo: \n");
     scanf("%d%d", &numeroM, &numeroN);
 
+    //realizando uma verificação para garantir que o "numeroM" seja sempre o menor entre os dois informados ->
+    if (numeroM > numeroN) {
+        int auxiliar = numeroM;
+        numeroM = numeroN;
+        numeroN = auxiliar;
+    }
+
     //partindo do maior até o menor do intervalo
-    //cont recebe numeroN - 1 porque o numero N em não estará incluído na soma
-    for (cont = numeroN - 1; cont > numeroM; cont--) {
+    //cont recebe numeroN - 1 porque o numero N em si não estará incluído na soma
+    for (cont = numeroM + 1; cont < numeroN; cont++) {
         somaDoIntervalo += cont;
     }
 
